@@ -10,15 +10,18 @@ class button {
   }
   void show() {
     fill(66, 105, 245);
-    rect(this.x, this.y, this.w, this.h);
-    fill(0, 0, 0)
+    rect(this.x, this.y, this.w, this.h, 15);
+    fill(0, 0, 0);
     text(this.text, this.x+this.w/2, this.y+this.h/2);
     textAlign(CENTER, CENTER);
   }
   boolean checkInput() {
-    if((this.x >= mouseX && mouseX <= this.x+this.w) && (this.y >= mouseY && mouseY <= this.y+this.h)) {
+    if((this.x <= mouseX && mouseX <= this.x+this.w) && (this.y <= mouseY && mouseY <= this.y+this.h)) {
       return true;
-    } else return false;
+    } else {
+      println("x: " + this.x + "y: " + this.y + " mouse value: (" + mouseX + ", " + mouseY + ")");
+      return false;
+    }
   }
 
 }
