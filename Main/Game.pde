@@ -28,5 +28,8 @@ class Game {
       board.resetBoard();
     }
   }
-
+  boolean checkLost() {
+    
+    return;
+  }
 }

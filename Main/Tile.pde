@@ -7,8 +7,11 @@ class Tile {
   }
   void updateRGB() {
     if(value != 0) {
-      this.rgb = color[(log(this.value)-1)/10];
+      this.rgb = colors[log2(this.value)];
       //this.rgb = color(255, 0, 0);
     } else this.rgb = color(#CDC1B4);
+  }
+  int log2(int n) {
+    return (int) (log(n)/log(2));
   }
 }
