@@ -2,11 +2,11 @@ class button {
   int x, y, w, h;
   String text;
   button(int x, int y, int w, int h, String text) {
-  this.x = x;
-  this.y = y;
-  this.w = w;
-  this.h = h;
-  this.text = text;
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.text = text;
   }
   void show() {
     fill(66, 105, 245);
@@ -19,7 +19,6 @@ class button {
     if((this.x <= mouseX && mouseX <= this.x+this.w) && (this.y <= mouseY && mouseY <= this.y+this.h)) {
       return true;
     } else {
-      println("x: " + this.x + "y: " + this.y + " mouse value: (" + mouseX + ", " + mouseY + ")");
       return false;
     }
   }
