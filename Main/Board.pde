@@ -1,5 +1,6 @@
 class Board {
   Tile[][] tileMap;
+  int score = 0;
   Board() {
     this.tileMap = new Tile[][] {
       new Tile[] {new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
@@ -51,7 +52,7 @@ class Board {
       ArrayList<Integer> temp2 = new ArrayList<Integer>();
        
       //tilføjer alle tiles med en værdi som ikke er nul
-      //til et array, fra bund til top
+      //til et array, fra top til bund
       for(int row = 0; row < this.tileMap.length; row++) {
         if(this.tileMap[row][col].value != 0) {
           temp1.add(this.tileMap[row][col].value);
@@ -63,6 +64,7 @@ class Board {
         if(row < temp1.size()-1 && temp1.get(row).equals(temp1.get(row+1))) {
           //Tilføj et element, som summen af 2 tiles.
           temp2.add(temp1.get(row)*2);
+          score = score + temp1.get(row)*2;
           row++;
         } else {
           temp2.add(temp1.get(row));
@@ -102,6 +104,7 @@ class Board {
         if(col < temp1.size()-1 && temp1.get(col).equals(temp1.get(col+1))) {
           //Tilføj et element, som summen af 2 tiles.
           temp2.add(temp1.get(col)*2);
+          score = score + temp1.get(col)*2;
           col++;
         } else {
           temp2.add(temp1.get(col));
@@ -141,6 +144,7 @@ class Board {
         if(col < temp1.size()-1 && temp1.get(col).equals(temp1.get(col+1))) {
           //Tilføj et element, som summen af 2 tiles.
           temp2.add(temp1.get(col)*2);
+          score = score + temp1.get(col)*2;
           col++;
         } else {
           temp2.add(temp1.get(col));
@@ -148,7 +152,7 @@ class Board {
       }
       //tøm rækken
       for(int col = 0; col < this.tileMap.length; col++) {
-        tileMap[row][col].value = 0;
+        this.tileMap[row][col].value = 0;
       }
       int j = this.tileMap.length-1;
       for(int i = 0; i < temp2.size(); i++) {
@@ -180,6 +184,7 @@ class Board {
         if(row < temp1.size()-1 && temp1.get(row).equals(temp1.get(row+1))) {
           //Tilføj et element, som summen af 2 tiles
           temp2.add(temp1.get(row)*2);
+          score = score + temp1.get(row)*2;
           row++;
         } else {
           temp2.add(temp1.get(row));
@@ -213,6 +218,7 @@ class Board {
         this.tileMap[row][col].value = 0;
       }
     }
+    this.score = 0;
     this.addRandTile();
     this.updateBoard();
   }
