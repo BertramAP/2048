@@ -8,7 +8,12 @@ class Board {
       new Tile[] {new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
       new Tile[] {new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
     };
-    
+  }
+  enum dir {
+    right,
+    left,
+    up,
+    down
   }
   void updateBoard() {
     textAlign(CENTER, CENTER);
@@ -23,7 +28,29 @@ class Board {
       }
     }
   }
-  
+  void animateBoard(Tile[][] oldBoard, dir direction) {
+    boolean notDone = true;
+    while(notDone) {
+      if(direction == dir.left) {
+        int row = this.tileMap.length;
+        int col = this.tileMap.length;
+        fill(oldBoard[row][col].rgb);
+        rect(width*(2.5+col)/9+10, width*(2+row)/9-250, width/9-10, width/9-10, 10);
+        if((oldBoard[row][col].value != this.tileMap[row][col].value || this.tileMap[row][col].value == 0) && row != 0) {
+          oldBoard[row-1][col].value = oldBoard[row][col].value;
+          fill(oldBoard[row][col].rgb);
+          rect(width*(2.5+col)/9+10, width*(2+row)/9-250, width/9-10, width/9-10, 10);
+          oldBoard[row][col].value = 0;
+        } else if (col != 0) {
+          col--;
+        } else notDone = false;
+      } else if(direction == dir.right) {
+        int row = 0;
+        int col = 0;
+        
+      }
+    }
+  }
   void addRandTile() {
     int row = 0;
     int x = (int) random(16);
@@ -45,7 +72,7 @@ class Board {
   }
   boolean moveTilesUP() {
     //bool der skal bestemme om der kan tilføjes en tile
-    boolean addable = false;
+    boolean addable = true;
     for(int col = 0; col < tileMap.length; col++) {
       //temp arrays
       ArrayList<Integer> temp1 = new ArrayList<Integer>();
@@ -79,13 +106,13 @@ class Board {
         this.tileMap[j][col].value = temp2.get(i);
         j++;
       }
-    if (temp2.size() < this.tileMap.length) addable = true;
+    if (temp2.size() == this.tileMap.length) addable = false;
     }
     return addable;
   }
   boolean moveTilesLEFT() {
     //bool der skal bestemme om der kan tilføjes en tile
-    boolean addable = false;
+    boolean addable = true;
     for(int row = 0; row < tileMap.length; row++) {
       //temp arrays
       ArrayList<Integer> temp1 = new ArrayList<Integer>();
@@ -119,13 +146,13 @@ class Board {
         this.tileMap[row][j].value = temp2.get(i);
         j++;
       }
-    if (temp2.size() < this.tileMap.length) addable = true;
+    if (temp2.size() == this.tileMap.length) addable = false;
     }
     return addable;
   }
   boolean moveTilesRIGHT() {
     //bool der skal bestemme om der kan tilføjes en tile
-    boolean addable = false;
+    boolean addable = true;
     for(int row = 0; row < tileMap.length; row++) {
       //temp arrays
       ArrayList<Integer> temp1 = new ArrayList<Integer>();
@@ -159,13 +186,13 @@ class Board {
         this.tileMap[row][j].value = temp2.get(i);
         j--;
       }
-      if (temp2.size() < this.tileMap.length) addable = true;
+      if (temp2.size() == this.tileMap.length) addable = false;
     }
     return addable;
   }
   boolean moveTilesDOWN() {
     //bool der skal bestemme om der kan tilføjes en tile
-    boolean addable = false;
+    boolean addable = true;
     for(int col = 0; col < tileMap.length; col++) {
       //temp arrays
       ArrayList<Integer> temp1 = new ArrayList<Integer>();
@@ -199,7 +226,7 @@ class Board {
         this.tileMap[j][col].value = temp2.get(i);
         j--;
       }
-    if (temp2.size() < this.tileMap.length) addable = true;
+    if (temp2.size() == this.tileMap.length) addable = false;
     }
     return addable;
   }
