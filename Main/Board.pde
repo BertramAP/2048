@@ -21,13 +21,13 @@ class Board {
         text(str(tileMap[row][col].value), int(width*(2.5+col)/9+(width/9-10)/2), width*(2+row)/9-250+(width/9-10)/2);
       }
     }
-  } /*
-  void animateBoard(Tile[][] oldBoard, dir direction) {
+  } 
+  void animateBoard(Tile[][] oldBoard, Dir direction) {
     boolean notDone = true;
     while(notDone) {
       if(direction == Dir.left) {
-        int row = this.tileMap.length;
-        int col = this.tileMap.length;
+        int row = this.tileMap.length-1;
+        int col = this.tileMap.length-1;
         fill(oldBoard[row][col].rgb);
         rect(width*(2.5+col)/9+10, width*(2+row)/9-250, width/9-10, width/9-10, 10);
         if((oldBoard[row][col].value != this.tileMap[row][col].value || this.tileMap[row][col].value == 0) && row != 0) {
@@ -44,7 +44,7 @@ class Board {
         
       }
     }
-  }*/
+  }
   void addRandTile() {
     int row = 0;
     int x = (int) random(16);
@@ -78,7 +78,7 @@ class Board {
         if(this.tileMap[row][col].value != 0) {
           temp1.add(this.tileMap[row][col].value);
         } //Hvis der 0, bliver der lavet en ændring
-        if(row < 0 && this.tileMap[row][col].value != 0 && this.tileMap[row-1][col].value == 0) changed = true;
+        if(row != 0 && this.tileMap[row][col].value != 0 && this.tileMap[row-1][col].value == 0) changed = true;
       }
       //Tjek om nogle tiles skal forenes
       for(int row = 0; row  < temp1.size(); row++) {
@@ -119,7 +119,7 @@ class Board {
         if(this.tileMap[row][col].value != 0) {
           temp1.add(this.tileMap[row][col].value);
         } //Hvis der 0, bliver der lavet en ændring
-        if(col < 0 && this.tileMap[row][col].value != 0 && this.tileMap[row][col-1].value == 0) changed = true;
+        if(col != 0 && this.tileMap[row][col].value != 0 && this.tileMap[row][col-1].value == 0) changed = true;
       }
       //Tjek om nogle tiles skal forenes
       for(int col = 0; col  < temp1.size(); col++) {
@@ -208,7 +208,7 @@ class Board {
         if(this.tileMap[row][col].value != 0) {
           temp1.add(this.tileMap[row][col].value);
         }  //Hvis der 0, bliver der lavet en ændring
-        if(row < tileMap.length-1 && this.tileMap[row][col].value != 0 && this.tileMap[row+1][col].value == 0) changed = true;
+        if(row != tileMap.length-1 && this.tileMap[row][col].value != 0 && this.tileMap[row+1][col].value == 0) changed = true;
       }
       //Tjek om nogle tiles skal forenes
       for(int row = 0; row  < temp1.size(); row++) {

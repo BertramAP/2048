@@ -1,6 +1,7 @@
 StartScreen startScreen;
 AboutScreen aboutScreen;
 Game game;
+Tile[][] tempMap;
 void setup() {
   fullScreen();
   startScreen = new StartScreen();
@@ -19,16 +20,17 @@ void draw() {
 
 void keyPressed() {
   println("Key pressed");
-  /*if(game.active) {
+  if(game.active) {
     Tile[][] tempMap = game.board.tileMap;
-  }*/
+  }
   if(game.active && keyCode == UP) {
     if(game.board.moveTilesUP()) game.board.addRandTile();
     game.updateGame();
     //game.board.printBoard();
   }else if(game.active && keyCode == LEFT) {
     if(game.board.moveTilesLEFT()) game.board.addRandTile();
-    game.updateGame();
+    //game.updateGame();
+    game.board.animateBoard(tempMap, Dir.left);
     //game.board.printBoard();
   }else if(game.active && keyCode == RIGHT) {
     if(game.board.moveTilesRIGHT()) game.board.addRandTile();
