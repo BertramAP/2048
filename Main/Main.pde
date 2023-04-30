@@ -29,8 +29,7 @@ void keyPressed() {
     //game.board.printBoard();
   }else if(game.active && keyCode == LEFT) {
     if(game.board.moveTilesLEFT()) game.board.addRandTile();
-    //game.updateGame();
-    game.board.animateBoard(tempMap, Dir.left);
+    game.updateGame();
     //game.board.printBoard();
   }else if(game.active && keyCode == RIGHT) {
     if(game.board.moveTilesRIGHT()) game.board.addRandTile();

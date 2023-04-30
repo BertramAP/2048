@@ -8,7 +8,7 @@ class Board {
       new Tile[] {new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
       new Tile[] {new Tile(0), new Tile(0), new Tile(0), new Tile(0)},
     };
-  }
+  } 
   void updateBoard() {
     textAlign(CENTER, CENTER);
     textSize(32);
@@ -22,6 +22,7 @@ class Board {
       }
     }
   } 
+  /*
   void animateBoard(Tile[][] oldBoard, Dir direction) {
     boolean notDone = true;
     while(notDone) {
@@ -44,7 +45,7 @@ class Board {
         
       }
     }
-  }
+  }*/
   void addRandTile() {
     int row = 0;
     int x = (int) random(16);
