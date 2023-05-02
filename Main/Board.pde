@@ -54,7 +54,7 @@ class Board {
       for(int row = 0; row < this.tileMap.length; row++) {
         if(this.tileMap[row][col].value != 0) {
           temp1.add(this.tileMap[row][col].value);
-        } //Hvis der 0, bliver der lavet en ændring
+        } //Tjekker efter om der sker en ændring
         if(row != 0 && this.tileMap[row][col].value != 0 && this.tileMap[row-1][col].value == 0) changed = true;
       }
       //Tjek om nogle tiles skal forenes
@@ -65,7 +65,7 @@ class Board {
           temp2.add(temp1.get(row)*2);
           score = score + temp1.get(row)*2;
           row++;
-          changed = true;
+          changed = true; //Hvis to tiles kombineres sker der en ændring
         } else {
           temp2.add(temp1.get(row));
         }
@@ -95,7 +95,7 @@ class Board {
       for(int col = 0; col < this.tileMap.length; col++) {
         if(this.tileMap[row][col].value != 0) {
           temp1.add(this.tileMap[row][col].value);
-        } //Hvis der 0, bliver der lavet en ændring
+        } //Tjekker efter om der sker en ændring
         if(col != 0 && this.tileMap[row][col].value != 0 && this.tileMap[row][col-1].value == 0) changed = true;
       }
       //Tjek om nogle tiles skal forenes
@@ -106,7 +106,7 @@ class Board {
           temp2.add(temp1.get(col)*2);
           score = score + temp1.get(col)*2;
           col++;
-          changed = true;
+          changed = true; //Hvis to tiles kombineres sker der en ændring
         } else {
           temp2.add(temp1.get(col));
         }
@@ -136,14 +136,8 @@ class Board {
       for(int col = this.tileMap.length-1; col >= 0; col--) {
         if(this.tileMap[row][col].value != 0) {
           temp1.add(this.tileMap[row][col].value);
-        } //Hvis der 0, bliver der lavet en ændring
-        if(col != this.tileMap.length-1 && (this.tileMap[row][col].value != 0 && this.tileMap[row][col+1].value == 0)) {
-          changed = true;
-          println("Col = " + col + " Row = " + row);
-          println("1st is" + (col != this.tileMap.length-1));
-          println("2st is" + (this.tileMap[row][col].value != 0));
-          println("3st is" + (this.tileMap[row][col+1].value == 0));
-      }
+        } //Tjekker efter om der sker en ændring
+        if(col != this.tileMap.length-1 && (this.tileMap[row][col].value != 0 && this.tileMap[row][col+1].value == 0)) changed = true;
       }
       //Tjek om nogle tiles skal forenes
       for(int col = 0; col  < temp1.size(); col++) {
@@ -153,8 +147,7 @@ class Board {
           temp2.add(temp1.get(col)*2);
           score = score + temp1.get(col)*2;
           col++;
-          println("Changed in adding");
-          changed = true;
+          changed = true; //Hvis to tiles kombineres sker der en ændring
         } else {
           temp2.add(temp1.get(col));
         }
@@ -195,7 +188,7 @@ class Board {
           temp2.add(temp1.get(row)*2);
           score = score + temp1.get(row)*2;
           row++;
-          changed = true;
+          changed = true; //Hvis to tiles kombineres sker der en ændring
         } else {
           temp2.add(temp1.get(row));
         }
