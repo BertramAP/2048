@@ -11,7 +11,7 @@ class Tile {
       //this.rgb = color(255, 0, 0);
     } else this.rgb = color(#CDC1B4);
   }
-  int log2(int n) {
+  int log2(int n) { //Returner en index til colors arrayet, ud fra brikkens værdi
     return (int) (log(n)/log(2));
   }
 }

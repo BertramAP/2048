@@ -22,35 +22,11 @@ class Board {
       }
     }
   } 
-  /*
-  void animateBoard(Tile[][] oldBoard, Dir direction) {
-    boolean notDone = true;
-    while(notDone) {
-      if(direction == Dir.left) {
-        int row = this.tileMap.length-1;
-        int col = this.tileMap.length-1;
-        fill(oldBoard[row][col].rgb);
-        rect(width*(2.5+col)/9+10, width*(2+row)/9-250, width/9-10, width/9-10, 10);
-        if((oldBoard[row][col].value != this.tileMap[row][col].value || this.tileMap[row][col].value == 0) && row != 0) {
-          oldBoard[row-1][col].value = oldBoard[row][col].value;
-          fill(oldBoard[row][col].rgb);
-          rect(width*(2.5+col)/9+10, width*(2+row)/9-250, width/9-10, width/9-10, 10);
-          oldBoard[row][col].value = 0;
-        } else if (col != 0) {
-          col--;
-        } else notDone = false;
-      } else if(direction == Dir.right) {
-        int row = 0;
-        int col = 0;
-        
-      }
-    }
-  }*/
   void addRandTile() {
     int row = 0;
     int x = (int) random(16);
     int i = 0;
-    Daniel: while(true) {  
+    Daniel: while(true) { //Tak til daniel for at vise mig, man kan stoppe et while loop når som helst 
       for(int col = 0; col < tileMap[row].length; col++) { 
         if(tileMap[row][col].value == 0 && i < x) {
           i++;
@@ -235,15 +211,6 @@ class Board {
       }
     }
     return changed;
-  }
-  void printBoard() {
-    for(int row = 0; row < this.tileMap.length; row++) {
-      for(int col = 0; col < this.tileMap.length; col++) {
-        print(this.tileMap[row][col].value + ", ");
-      }
-      println();
-    }
-    println();
   }
   void resetBoard() {
     for(int row = 0; row < this.tileMap.length; row++) {
